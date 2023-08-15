@@ -426,7 +426,7 @@ class MangaTranslator():
         return text_regions
 
     async def _run_text_translation(self, ctx: Context):
-        translated_sentences = await dispatch_translation(ctx.translator, [region.get_text() for region in ctx.text_regions], ctx.use_mtpe,
+        translated_sentences = await dispatch_translation(ctx.translator, [region.get_text() for region in ctx.text_regions], ctx.mtpe,
                                                           'cpu' if self._cuda_limited_memory else self.device)
 
         for region, translation in zip(ctx.text_regions, translated_sentences):
